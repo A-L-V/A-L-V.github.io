@@ -1,16 +1,30 @@
-body{
-    margin-left: 25%;
-    background-color: red;
-    margin-right: 25%;
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-div{
-    background-color: black;
-    color: white;
+body{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(0,0,0);
 }
+
+h1{
+    text-align: center;
+    text-anchor: unset;
+    background-color: teal;
+    width: 40%;
+    height: 5%;
+    margin-top: 2%;
+    margin-left: 30%;
+}
+
 textarea{
     resize: none;
     background-color: rgb(0,0,0);
+    color: white;
+    margin-left: 20%;
 }
 button{
     background-color: white;

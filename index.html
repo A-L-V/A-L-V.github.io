@@ -1,21 +1,23 @@
 <html>
     <head>
         <link href="Aletorio.css" rel="stylesheet" type="text/css"></style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     </head>
-    <body style="background-color: black;">
+    <body>
+        <p>
+            <h1>Elector</h1>
+        </p>
+        <textarea id="text" cols="50%" rows="20%"></textarea>
+        
         <div>
-            <textarea id="text" cols="50" rows="20" ></textarea>
-            </br>
-            
             <div id="numeros">
-                <p> Número de ganadores 
+                <p style="color: aliceblue;"> Número de ganadores 
                 <input type="number" id="nGanadores" value="1"/> 
                 </p>
-                </br>
             </div>
 
             <button id="evento"></button>
-            <p id="winners"></p>
+            <p id="mostrar" style="color: aliceblue;"></p>
         </div>
         <script src="Aleatorio.js"></script>
     </body>
