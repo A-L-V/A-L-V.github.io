@@ -5,7 +5,7 @@ let nGanadores = document.getElementById("nGanadores");7
 
 evento.addEventListener("click", function(){
     mostrar.innerHTML = " ";
-    let array = proDatos();
+    let array = noEmptySpace();
     let n = nGanadores.value;
     let ganadores = [];
     for(let i = 0; i < n; i++){
@@ -32,11 +32,23 @@ function eleccion(array, ganadores){
     return ganadores;
 }
 
-function proDatos(){
+function noEmptySpace(){
     let datos = text.value.split("\n");
-    console.log(datos)
-    var a = datos.find( elemento => elemento == "");
-    console.log(a)
-    console.log(datos)
-    return datos;
+    for(let x in datos){
+        while(datos[x] == ""){
+            datos.splice(x,1);
+        }
+    }
+    return noDateRepeat(datos);
+}
+
+function noDateRepeat(datos){
+    for(let x in datos){
+        for(let i in datos){
+            while( i != x && datos[x] == datos[i]){
+                datos.splice(i,1);
+            }
+        }
+    }
+    return datos
 }
