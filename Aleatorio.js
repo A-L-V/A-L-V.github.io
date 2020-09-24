@@ -8,11 +8,15 @@ evento.addEventListener("click", function(){
     let array = noEmptySpace();
     let n = nGanadores.value;
     let ganadores = [];
+    if(n < 1 || n > array.length){
+        n = 1;
+    }
+
     for(let i = 0; i < n; i++){
         eleccion(array,ganadores); 
     }
     for(let i in ganadores){
-        mostrar.innerHTML = mostrar.innerHTML + ganadores[i]
+        mostrar.innerHTML = mostrar.innerHTML + ganadores[i];
     }
 })
 
@@ -50,5 +54,13 @@ function noDateRepeat(datos){
             }
         }
     }
+    arreglarTextArea(datos);
     return datos
+}
+
+function arreglarTextArea(datos){
+    text.value = "";
+    for(let i in datos){
+        text.value += datos[i] + "\n";
+    }
 }
