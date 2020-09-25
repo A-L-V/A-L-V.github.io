@@ -2,23 +2,42 @@ let text = document.getElementById("text");
 let evento = document.getElementById("evento");
 let mostrar = document.getElementById("mostrar");
 let nGanadores = document.getElementById("nGanadores");7
+let file = document.getElementById("file")
 
 evento.addEventListener("click", function(){
+    valideText();
+    /*
     mostrar.innerHTML = " ";
     let array = noEmptySpace();
     let n = nGanadores.value;
     let ganadores = [];
     if(n < 1 || n > array.length){
         n = 1;
+        nGanadores.value = 1;
     }
-
     for(let i = 0; i < n; i++){
         eleccion(array,ganadores); 
     }
     for(let i in ganadores){
-        mostrar.innerHTML = mostrar.innerHTML + ganadores[i];
-    }
+        mostrar.innerHTML = mostrar.innerHTML + ganadores[i] + "\n";
+    }*/
 })
+
+function valideText(){
+    let ruta = file.value;
+    let permitida = /(.pdf|.txt|.docx|.xlsx|.TXT|.DOCX|.PDF|.XLSX)$/i;
+    if(!permitida.exec(ruta)){
+        alert("archivo no permitido, intente denuevo")
+        file.value = "";
+        return false
+    }
+    else{
+        alert("archivo correcto")
+        let xd = file.readAsText(Blob|File)
+        console.log(xd)
+    }
+}
+
 
 function eleccion(array, ganadores){
     let aleatorio = Math.random()*100.0;
