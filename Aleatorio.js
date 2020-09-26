@@ -4,39 +4,54 @@ let mostrar = document.getElementById("mostrar");
 let nGanadores = document.getElementById("nGanadores");7
 let file = document.getElementById("file")
 
+file.addEventListener('change',function(e){
+    let ruta = file.value;
+    let permitida = /(.txt|.TXT)$/i;
+    if(!permitida.exec(ruta)){
+        alert("archivo no permitido, intente denuevo, solo archivos .txt");
+        file.value = "";
+        cargaArchivo = false;
+        return false;
+    }
+    else{
+        alert("archivo correcto");
+        const reader = new FileReader();
+        reader.onload = function(){
+            noEmptySpace(reader.result)
+        }
+        reader.readAsText(file.files[0]);  
+    }
+
+},false)
+
+
 evento.addEventListener("click", function(){
-    valideText();
-    /*
-    mostrar.innerHTML = " ";
-    let array = noEmptySpace();
+    let arrayData;
+    if(text.value !== ""){
+        arrayData = noEmptySpace(text.value);
+    }else{
+        alert("valores no ingresados")
+        return false;
+    } 
+    // evaluacion de numero de ganadores
     let n = nGanadores.value;
     let ganadores = [];
-    if(n < 1 || n > array.length){
+    if(n < 1 || n > arrayData.length){
         n = 1;
         nGanadores.value = 1;
     }
+    // eleccion de ganadores
     for(let i = 0; i < n; i++){
-        eleccion(array,ganadores); 
+        eleccion(arrayData,ganadores); 
     }
+    //mostrar ganadores
+    mostrar.innerHTML = " ";
     for(let i in ganadores){
         mostrar.innerHTML = mostrar.innerHTML + ganadores[i] + "\n";
-    }*/
+    }
 })
 
-function valideText(){
-    let ruta = file.value;
-    let permitida = /(.pdf|.txt|.docx|.xlsx|.TXT|.DOCX|.PDF|.XLSX)$/i;
-    if(!permitida.exec(ruta)){
-        alert("archivo no permitido, intente denuevo")
-        file.value = "";
-        return false
-    }
-    else{
-        alert("archivo correcto")
-        let xd = file.readAsText(Blob|File)
-        console.log(xd)
-    }
-}
+
 
 
 function eleccion(array, ganadores){
@@ -55,8 +70,8 @@ function eleccion(array, ganadores){
     return ganadores;
 }
 
-function noEmptySpace(){
-    let datos = text.value.split("\n");
+function noEmptySpace(forma){
+    let datos = forma.split("\n");
     for(let x in datos){
         while(datos[x] == ""){
             datos.splice(x,1);
